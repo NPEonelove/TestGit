@@ -84,6 +84,12 @@ public class JwtService {
         return claims.getSubject();
     }
 
+    // получение роли из access токена
+    public String getUserRoleFromJwtToken(String accessToken) {
+        Claims claims = getClaimsFromAccessToken(accessToken);
+        return claims.get("role", String.class);
+    }
+
     // валидация jwt токена
     public boolean validateJwtToken(String token) {
         try {
